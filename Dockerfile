@@ -29,7 +29,7 @@ RUN apt-get install -y awscli
 
 # Download maven
 ARG maven_filename="apache-maven-${maven_version}-bin.tar.gz"
-ARG maven_filemd5="516923b3955b6035ba6b0a5b031fbd8b"
+ARG maven_filemd5="948110de4aab290033c23bf4894f7d9a"
 ARG maven_url="http://archive.apache.org/dist/maven/maven-3/${maven_version}/binaries/${maven_filename}"
 ARG maven_tmp="/tmp/${maven_filename}"
 
