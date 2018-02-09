@@ -29,13 +29,13 @@ RUN apt-get install -y awscli
 
 # Install Docker Client to access host 
 ARG DOCKER_CLIENT=docker-17.12.0-ce.tgz
-RUN cd /tmp/ 
-&& curl -sSL -O https://download.docker.com/linux/static/stable/x86_64/${DOCKER_CLIENT}20 \
-&& tar zxf ${DOCKER_CLIENT} \
-&& mkdir -p /usr/local/bin \
-&& mv ./docker/docker /usr/local/bin \
-&& chmod +x /usr/local/bin/docker \
-&& rm -rf /tmp/*
+RUN cd /tmp/ \
+	&& curl -sSL -O https://download.docker.com/linux/static/stable/x86_64/${DOCKER_CLIENT} \
+	&& tar zxf ${DOCKER_CLIENT} \
+	&& mkdir -p /usr/local/bin \
+	&& mv ./docker/docker /usr/local/bin \
+	&& chmod +x /usr/local/bin/docker \
+	&& rm -rf /tmp/*
 
 # Download maven
 ARG maven_filename="apache-maven-${maven_version}-bin.tar.gz"
