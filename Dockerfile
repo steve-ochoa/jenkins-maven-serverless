@@ -23,9 +23,13 @@ RUN apt-get install -y build-essential
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 RUN apt-get install -y nodejs
 
-# Install Serverless and aws-cli
+# Install Serverless
 RUN npm install -g serverless
-RUN apt-get install -y awscli
+
+# Install aws-cli
+RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+RUN unzip awscli-bundle.zip
+RUN ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
 # Install Docker Client to access host 
 ARG DOCKER_CLIENT=docker-17.12.0-ce.tgz
