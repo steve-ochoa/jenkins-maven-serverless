@@ -23,8 +23,9 @@ RUN apt-get install -y build-essential
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 RUN apt-get install -y nodejs
 
-# Install Serverless
+# Install Serverless and plugins
 RUN npm install -g serverless
+RUN npm install serverless-pseudo-parameters
 
 # Install aws-cli
 RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
