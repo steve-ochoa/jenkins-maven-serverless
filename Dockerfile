@@ -24,7 +24,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 RUN apt-get install -y nodejs
 
 # Install Serverless and plugins
-RUN npm install -g serverless
+RUN npm install -g serverless@1.25.0
 RUN npm install serverless-pseudo-parameters
 RUN npm install serverless-plugin-log-retention
 
