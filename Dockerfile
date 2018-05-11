@@ -27,6 +27,7 @@ RUN apt-get install -y nodejs
 RUN npm install -g serverless@1.25.0
 RUN npm install serverless-pseudo-parameters
 RUN npm install serverless-plugin-log-retention
+RUN npm install --save serverless-cloudformation-changesets
 
 # Install aws-cli
 RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
