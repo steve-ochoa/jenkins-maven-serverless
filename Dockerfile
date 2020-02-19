@@ -24,7 +24,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 RUN apt-get install -y nodejs
 
 # Install Serverless and plugins
-RUN npm install -g serverless@1.40.0
+RUN npm install -g serverless@1.64.0
 RUN npm install serverless-pseudo-parameters@1.6.0
 RUN npm install serverless-plugin-log-retention@1.0.3
 RUN npm install --save serverless-cloudformation-changesets
