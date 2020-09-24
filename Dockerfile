@@ -5,9 +5,10 @@ MAINTAINER Steve Ochoa (github: boostninja)
 # Do not display some warning messages
 ENV DEBIAN_FRONTEND noninteractive
 
-# Set Maven variables
+# Set Env variables
 ENV maven_version 3.5.2
 ENV MAVEN_HOME /opt/maven
+ENV python_version 3.8.5
 
 USER root
 RUN apt-get update \
@@ -60,6 +61,24 @@ RUN tar xzf ${maven_tmp}  -C /opt/ \
         && ln -s ${MAVEN_HOME}/bin/mvn /usr/local/bin
 
 ENV PATH ${MAVEN_HOME}/bin:$PATH
+
+# Download & Install Python
+ARG python_filename="Python-${python_version}.tar.xz"
+ARG python_url="https://www.python.org/ftp/python/${python_version}/${python_filename}"
+ARG python_tmp="/tmp/Python-${python_version}"
+ARG pip_version="3.8"
+
+RUN apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
+WORKDIR /tmp
+RUN wget --no-verbose -O ${python_filename} ${python_url}
+RUN tar -xf ${python_filename}
+WORKDIR "Python-${python_version}"
+RUN ./configure --enable-optimizations
+RUN make
+RUN make altinstall
+WORKDIR /
+RUN rm -rf ${python_tmp}
+RUN ln -s /usr/local/bin/pip${pip_version} /usr/local/bin/pip
 
 # Clean 
 RUN  apt-get clean \
